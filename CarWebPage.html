@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CarInfo</title>
+</head>
+<link href="https://fonts.googleapis.com/css?family=Baloo+Bhai&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+    /* CSS Reset */
+    body {
+        font-family: 'Baloo Bhai', cursive;
+        color: white;
+        background: url('crimg.jpg');
+        background-size: 1366px 625px;
+        background-repeat: no-repeat;
+    }
+    .mid {
+        display: block;
+        width: 38%;
+        margin: 0px auto;
+        /* border: 2px solid green; */
+    }
+    .navbar {
+        display: list-item;
+    }
+
+    .navbar li {
+        display: inline-block;
+        font-size: 25px;
+    }
+
+    .navbar li a {
+        color: white;
+        text-decoration: none;
+        padding: 30px 15px;
+
+    }
+
+    .navbar li:hover{
+        text-decoration: underline;
+        color: gray;
+
+    }
+
+    .btn {
+        font-family: 'Baloo Bhai', cursive;
+        margin: 20px 90px;
+        background-color: black;
+        color: white;
+        padding: 4px 14px;
+        border: 2px solid grey;
+        border-radius: 10px;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    .btn:hover {
+        background-color: rgb(31, 30, 30);
+    }
+
+    .container {
+        border: 2px solid white;
+        margin: 30px;
+        padding: 0px;
+        width: 33%;
+        height: 530px;
+        border-radius: 28px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .form-group input {
+        font-family: 'Baloo Bhai', cursive;
+        text-align: center;
+        display: block;
+        width:320px;
+        padding: 1px;
+        border: 2px solid black;
+        margin: 11px auto;
+        font-size: 25px;
+        border-radius: 8px;
+    }
+
+    .container h1 {
+        text-align: center;
+    }
+
+    .container button {
+        display: block;
+        width: 8%;
+        margin: 20px auto;
+    }
+</style>
+
+<body>
+    <header class="header">
+        <!-- Mid box for navbar -->
+        <div class="mid">
+            <ul class="navbar">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
+    </header>
+    <div class="container">
+        <h1>Car Info</h1>
+        <form action="">
+            <div class="form-group">
+                <input id="in1" type="text" name="" placeholder="Enter Registration Number">
+            </div>
+            <button onclick="fun1()" class="btn">Submit</button>
+        </div> 
+        <pre><div align=center id="d1" style="color:yellow;"> <h3 align=center></h3>
+        </div></pre>
+        </form>
+    </div>
+    <script>
+        function fun1() {
+                
+                var i = document.getElementById("in1").value
+
+                var xhr = new XMLHttpRequest();
+                
+                xhr.open("GET", "http://192.168.43.197/cgi-bin/vehicle.py?x=" + i, true);
+               
+                xhr.send();
+
+                xhr.onload = function() {
+                        var output = xhr.responseText;
+                        document.getElementById("d1").innerHTML = output;
+                }
+}
+</script>
+</body>
+
+</html>
